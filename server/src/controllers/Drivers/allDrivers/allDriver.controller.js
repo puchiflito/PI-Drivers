@@ -1,10 +1,10 @@
-const { Driver, Team } = require("../../../db");
+const { Driver, Teams } = require("../../../db");
 
 const allDriversDB = async () => {
   try {
     const dbDrivers = await Driver.findAll({
       include: {
-        model: Team,
+        model: Teams,
         attributes: ["name"],
       },
     });
