@@ -6,7 +6,33 @@ const getIdDriverHandler = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const driverId = await getIdDriverController({ id });
+    if (!id) {
+      res.status(411).json({ message: "ID no ingresado" });
+    } else {
+      const driverId = await getIdDriverController({ id });
+
+      if (!driverId) {
+        res
+          .status(404)
+          .json({
+            message: "No se encontró ningún conductor con el ID proporcionado",
+          });
+      } else {
+        res.status(200).json(driverId);
+      }
+    }
+
+    // const { id } = req.params;
+
+    // const driverId = await getIdDriverController({ id });
+
+    //     if (!driverId) {
+    //       res.status(411).json({ message: "ID no ingresado" });
+    //     } else if (id <= 0) {
+    //       res.status(404).json({ message: "El ID debe ser mayor que 0" });
+    //     } else {
+    //       res.status(200).json(driverId);
+    //     }
     // !driverId
     //   ? res.status(411).json({ mssage: "ID no ingresado" })
     //   : typeof id != "number"
@@ -16,14 +42,6 @@ const getIdDriverHandler = async (req, res) => {
     //   : id <= 0
     //   ? res.status(404).json({ message: "Debe ser mayor a 0" })
     //   : res.status(200).json(driverId);
-
-    if (!driverId) {
-      res.status(411).json({ message: "ID no ingresado" });
-    } else if (id <= 0) {
-      res.status(404).json({ message: "El ID debe ser mayor que 0" });
-    } else {
-      res.status(200).json(driverId);
-    }
 
     // if (!driverId || typeof id === "number" || id < 0) {
     //   return res.status(400).json({
