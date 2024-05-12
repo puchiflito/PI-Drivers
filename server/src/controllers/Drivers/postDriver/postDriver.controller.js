@@ -22,14 +22,17 @@ const postDriverController = async ({
       team,
     });
 
-    if (team && team.lenght > 0) {
-      const Team = await Teams.findAll({
+    if (team) {
+      const Team = await Teams.findOne({
         where: {
           name: team,
         },
       });
-      const relationTables = await driver.addTeams(Team);
-      return relationTables;
+      if (Team) {
+        await driver.addTeam(Team);
+      } else {
+        console.log("No se encontro ningun team");
+      }
     }
     return driver;
   } catch (error) {
