@@ -3,6 +3,7 @@ import LandingPage from "./Views/landingPage/LandingPage";
 import Home from "./Views/homePage/HomePage";
 import Detail from "./Views/detailPage/Detail";
 import FormPage from "./Views/formPage/FormPage";
+import "./App.css";
 
 function App() {
   return (
