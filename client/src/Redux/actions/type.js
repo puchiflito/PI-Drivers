@@ -1,3 +1,4 @@
 const GET_ALL_DRIVER = "GET_ALL";
+const GET_ALL_TEAMS = "GET_ALL_TEAMS";
 
-export { GET_ALL_DRIVER };
+export { GET_ALL_DRIVER, GET_ALL_TEAMS };
